@@ -51,6 +51,26 @@ const saleSchema = new Schema({
 
 const Sale = mongoose.model('sale', saleSchema);
 
-const cart = new Schema({
-
+const cartSchema = new Schema({
+  customer: {
+    type: Schema.Types.ObjectId,
+    ref: 'customer'
+  },
+  items: [{
+    // ref to the product document
+    product: {
+      type: Schema.Types.ObjectId,
+      ref: 'product'
+    }
+  }],
+  totalAmount: Number
 });
+
+const Cart = mongoose.model('cart', cartSchema);
+
+module.exports = {
+  Customer,
+  Product,
+  Sale,
+  Cart
+};
