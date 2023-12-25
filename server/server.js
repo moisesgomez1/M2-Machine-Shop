@@ -12,8 +12,11 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// statically serve everything in the build folder on the route '/build'
+app.use('/build', express.static(path.join(__dirname, '../build')));
+
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  return res.status(200).sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 app.listen(PORT, () => {
