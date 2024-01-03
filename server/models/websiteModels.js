@@ -25,7 +25,8 @@ const productSchema = new Schema({
   model: String,
   make: String,
   year: Number,
-  color: String
+  color: String,
+  image: String
 });
 
 const Product = mongoose.model('product', productSchema);
@@ -52,10 +53,6 @@ const saleSchema = new Schema({
 const Sale = mongoose.model('sale', saleSchema);
 
 const cartSchema = new Schema({
-  customer: {
-    type: Schema.Types.ObjectId,
-    ref: 'customer'
-  },
   items: [{
     // ref to the product document
     product: {

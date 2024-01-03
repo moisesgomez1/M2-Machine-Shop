@@ -1,0 +1,132 @@
+/* Reset some default styles */
+body, h1, h2, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+}
+
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+  border-bottom: 1px solid white;
+}
+
+.links {
+  margin-left: auto; /* Align links to the right */
+}
+
+.links a {
+  margin-left: 15px; /* Adjust the spacing between links as needed */
+  text-decoration: none;
+  color: blue;
+}
+
+
+
+/* Set a background color and font for the whole page */
+body {
+  background-color: #f8f8f8;
+  font-family: 'Arial', sans-serif;
+}
+
+.storecontent {
+  max-width: 1200px; /* Adjust this value based on your design */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.listings {
+  width: 90%; /* Adjust the width based on your design */
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.car {
+  flex: 0 0 calc(25% - 30px); /* Approximately 4 listings per row */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.car:hover {
+  transform: scale(1.05);
+  background-color: #f0f0f0;
+}
+
+.car-image {
+  max-width: 100%;
+  margin-bottom: 10px; /* Adjust the margin-bottom as needed */
+  height: 150px;
+  object-fit: cover;
+
+}
+
+.car-details {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px; /* Adjust the margin-top as needed */
+}
+
+.car-details li {
+  margin-bottom: 5px; /* Adjust the margin-bottom for spacing between details */
+}
+
+.name {
+  font-weight: bold; /* Adding bold to the name for emphasis */
+}
+
+/*Styling for when the user clicks on a listing and React Router redirects with Link */
+
+.productContainer {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: 70vh;
+}
+
+.largecarbox {
+  max-width: 50%; /* Adjust the width as needed */
+  margin-right: 100px; /* Adjust the margin as needed for spacing */
+}
+
+.largeimage {
+  width: 100%; /* Set a fixed width */
+  height: auto; /* Maintain the aspect ratio */
+  max-height: 300px; /* Set a maximum height as needed */
+  margin-bottom: 10px; /* Adjust the margin-bottom as needed */
+  object-fit: contain;
+}
+
+.details-box {
+    flex-grow: 1; /* Takes the remaining width */
+    padding: 20px; /* Add padding for better spacing */
+    background-color: #f4f4f4; /* Optional: Add background color */
+    height: 50vh; /* Adjust the height as needed */
+  }
+
+  .car-details-list {
+    list-style-type: none;
+    margin-bottom: 30px;
+  }
+
+  .car-details-list li{
+    margin-bottom: 15px;
+  }
+

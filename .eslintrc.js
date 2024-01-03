@@ -28,6 +28,8 @@ module.exports = {
     'react'
   ],
   rules: {
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-uses-react': 'off',
     indent: ['warn', 2],
     'no-unused-vars': ['off', { vars: 'local' }],
     'no-case-declarations': 'off',
