@@ -3,3 +3,12 @@
 Rather than execute some logic now, we can write a function body or code that can be used to perform the work later. */
 
 import * as types from '../constants/actionTypes';
+
+export function getCart () {
+    return function getCartThunk(dispatch, getState) {
+        fetch()
+    
+        
+    }
+
+};

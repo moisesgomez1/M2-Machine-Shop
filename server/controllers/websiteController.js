@@ -32,8 +32,10 @@ websiteController.createCar = (req, res, next) => {
     .catch(err => next(err));
 };
 
+// missing modularity in this? perhaps you can split this into two isolated middlewares. 
 websiteController.addToCart = (req, res, next) => {
   const { product } = req.body;
+  const { cartId } = req.body;
 
   // Assuming product is a valid ObjectId
   models.Product.findOne({ _id: product })
@@ -45,14 +47,35 @@ websiteController.addToCart = (req, res, next) => {
 
       const productId = foundProduct._id;
 
-      models.Cart.create({ items: [{ product: productId }] })
-        .then(result => {
-          return models.Cart.populate(result, { path: 'product' });
-        })
-        .then(populatedResult => {
-          console.log('Result we get back from populating:', populatedResult);
-          res.locals.result = populatedResult;
-          return next();
+      models.Cart.findById(cartId).exec()
+        .then(cart => {
+          if (!cart) {
+            // If the cart doesn't exist, create a new cart with the product
+            models.Cart.create({ items: [{ product: productId }] })
+              .then(result => {
+                res.locals.cartId = result._id;
+                return models.Cart.populate(result, { path: 'product' });
+              })
+              .then(populatedResult => {
+                console.log('Result we get back from populating:', populatedResult);
+                res.locals.result = populatedResult;
+                return next();
+              })
+              .catch(err => {
+                console.error('Error:', err);
+                next(err);
+              });
+          } else {
+            // If the cart exists, push the product into the items array
+            cart.items.push({ product: productId });
+            return cart.save()
+              .then(updatedCart => models.Cart.populate(updatedCart, { path: 'product' }))
+              .then(populatedCart => {
+                console.log('Updated cart:', populatedCart);
+                res.locals.result = populatedCart;
+                return next();
+              });
+          }
         })
         .catch(err => {
           console.error('Error:', err);
@@ -65,4 +88,18 @@ websiteController.addToCart = (req, res, next) => {
     });
 };
 
+// get request
+
+websiteController.getCart = (req, res, next) => {
+  models.Cart.find({}).exec()
+    .then(result => {
+      console.log('result from cart query ', result);
+      res.locals.cart = result;
+      return next();
+    })
+    .catch(err => {
+      console.error('Error:', err);
+      next(err);
+    });
+};
 module.exports = websiteController;

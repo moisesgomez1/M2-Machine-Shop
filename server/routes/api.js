@@ -11,10 +11,14 @@ router.post('/car', upload.single('image'), controller.createCar, (req, res) => 
   res.status(200).json(res.locals.newCar);
 });
 
+router.get('/cart', websiteController.getCart, (req, res) => {
+  res.status(200).json(res.locals.cart);
+});
+
 // Adding items to cart
 
 router.post('/cart', websiteController.addToCart, (req, res) => {
-  res.status(200).json(res.locals.result);
+  res.status(200).json({ result: res.locals.result, cartId: res.locals.cartId });
 });
 
 module.exports = router;
