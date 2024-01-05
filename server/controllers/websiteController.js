@@ -32,7 +32,7 @@ websiteController.createCar = (req, res, next) => {
     .catch(err => next(err));
 };
 
-// missing modularity in this? perhaps you can split this into two isolated middlewares. 
+// missing modularity in this? perhaps you can split this into two isolated middlewares.
 websiteController.addToCart = (req, res, next) => {
   const { product } = req.body;
   const { cartId } = req.body;
@@ -92,6 +92,8 @@ websiteController.addToCart = (req, res, next) => {
 
 websiteController.getCart = (req, res, next) => {
   models.Cart.find({}).exec()
+  // currently the document only has the object id as a reference but we use the populate method to fill up the field with the data.
+    .then(result => models.Cart.populate(result, { path: 'items.product' }))
     .then(result => {
       console.log('result from cart query ', result);
       res.locals.cart = result;

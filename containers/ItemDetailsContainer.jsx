@@ -7,11 +7,6 @@ const ItemDetailsContainer = () => {
   const { state } = useLocation();
   const receivedData = state.data;
   console.log('recieved data from history state ', receivedData);
-  // redux thunk
-  const thunkFunction = () => {
-
-  };
-
   const onClickEventHandler = (setterFunction) => {
     setterFunction('In Cart');
   };

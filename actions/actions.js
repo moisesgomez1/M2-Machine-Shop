@@ -1,14 +1,13 @@
 // Action Creators
-/* The word "thunk" is a programming term that means "a piece of code that does some delayed work".
-Rather than execute some logic now, we can write a function body or code that can be used to perform the work later. */
 
 import * as types from '../constants/actionTypes';
 
-export function getCart () {
-    return function getCartThunk(dispatch, getState) {
-        fetch()
-    
-        
-    }
+export const getCartActionCreator = cartData => ({
+  type: types.GET_CART,
+  payload: cartData
+});
 
-};
+export const addItemtoCartActionCreator = item => ({
+  type: types.ADD_ITEM_TO_CART,
+  payload: item
+});
