@@ -8,7 +8,8 @@ const NavBar = () => {
   return (<nav className="navbar">
     <div className="links">
       <Link to="/">Home</Link>
-      <Link to="/cart" onClick={dispatch(getCart())}>Cart</Link>
+      <Link to="/cart" onClick={() => dispatch(getCart())}>Cart</Link>
+      <Link to="/create">Create Listing</Link>
     </div>
 
   </nav>

@@ -17,7 +17,7 @@ a:visited {
   align-items: center;
   max-width: 100%;
   margin: 0 auto;
-  border-bottom: 1px solid white;
+  background-color: #010033;
 }
 
 .links {
@@ -25,9 +25,9 @@ a:visited {
 }
 
 .links a {
-  margin-left: 15px; /* Adjust the spacing between links as needed */
+  margin-left: 35px; /* Adjust the spacing between links as needed */
   text-decoration: none;
-  color: blue;
+  color: #ffffff;
 }
 
 
@@ -129,4 +129,6 @@ body {
   .car-details-list li{
     margin-bottom: 15px;
   }
+
+  
 

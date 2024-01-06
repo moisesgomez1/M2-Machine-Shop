@@ -7,7 +7,7 @@ const ItemDetailsContainer = () => {
   const { state } = useLocation();
   const receivedData = state.data;
   console.log('recieved data from history state ', receivedData);
-  const onClickEventHandler = (setterFunction) => {
+  const onClickStateHandler = (setterFunction) => {
     setterFunction('In Cart');
   };
   // state to update string in cart button
@@ -15,7 +15,7 @@ const ItemDetailsContainer = () => {
 
   return (<div className="productContainer">
     <LargeCarBox listing={receivedData} />
-    <CarDetails onClickEventHandler={onClickEventHandler} setAdded={setAdded} added={added} listing={receivedData} />
+    <CarDetails onClickStateHandler={onClickStateHandler} setAdded={setAdded} added={added} listing={receivedData} />
   </div>
 
   );

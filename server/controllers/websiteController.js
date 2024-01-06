@@ -36,6 +36,8 @@ websiteController.createCar = (req, res, next) => {
 websiteController.addToCart = (req, res, next) => {
   const { product } = req.body;
   const { cartId } = req.body;
+  
+  console.log ('cart id recieved from the client', cartId);
 
   // Assuming product is a valid ObjectId
   models.Product.findOne({ _id: product })
