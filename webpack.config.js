@@ -7,11 +7,14 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js'
   },
-  mode: process.env.NODE_ENV,
+  mode: 'development', // Correctly set the mode
+  resolve: {
+    extensions: ['.js', '.jsx'] // Add this to resolve .js and .jsx files
+  },
   module: {
     rules: [
       {
-        test: /\.jsx?/,
+        test: /\.jsx?/, // Updated regex to match both .js and .jsx files
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -37,9 +40,8 @@ module.exports = {
   },
   plugins: [new HtmlWebpackPlugin({
     hash: true,
-    template: 'public/index.html',
+    template: 'src/public/index.html',
     filename: 'index.html'
-
   })],
   devServer: {
     static: {
@@ -49,11 +51,13 @@ module.exports = {
       Commenting out these fields would not affect anything */
     },
     proxy: {
-      '/api': 'http://localhost:3000',
-      changeOrigin: true,
-      secure: false,
-      pathRewrite: {
-        '^/api': '' // Remove the '/api' prefix when forwarding the request
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        secure: false,
+        pathRewrite: {
+          '^/api': '' // Remove the '/api' prefix when forwarding the request
+        }
       }
     },
     compress: true,

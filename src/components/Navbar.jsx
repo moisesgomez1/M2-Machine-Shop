@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { getCart } from "../thunks/thunks";
+import { getCart } from "../../thunks/thunks";
 
 const NavBar = () => {
   const dispatch = useDispatch();

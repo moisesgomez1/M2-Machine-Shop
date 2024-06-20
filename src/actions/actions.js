@@ -1,6 +1,6 @@
 // Action Creators
 
-import * as types from '../constants/actionTypes';
+import * as types from '../actions/actions.js';
 
 export const getCartActionCreator = cartData => ({
   type: types.GET_CART,
